@@ -36,11 +36,6 @@ git add .gitignore
 git commit -m "ignore config.ini file"
 ```
 
-### 6. Collect you key from OpenWeatherMap
-```
-- https://home.openweathermap.org/api_keys
-```
-
 ### 7. Ensure that the private config.ini is ignored
 ```bash
 git status
