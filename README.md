@@ -2,7 +2,7 @@
 
 ### 1. Enable dependency scanning
 ```
-- Go to Settings -> Security -> Code security and analysis 
+- Go to Settings -> Security -> Code security 
 - Enable Dependabot alerts
 - Enable Dependabot security updates
 ```
@@ -28,8 +28,8 @@ Observe the [requirements.txt](samples/requirements.txt.sample) sample
 The default branch is typically `main` or `master` and is used to deploy to master. 
 GitHub dependabot will look for vulnerable dependencies on default branches only!
 
-You can check the current default branch on [settings](https://github.com/arainho/secure-git-workshop/settings/branches).   
-Take a look on the [requirements.txt](https://github.com/arainho/secure-git-workshop/blob/main/app/requirements.txt) file in the main branch.   
+You can check the current default branch on [settings](https://github.com/detiuaveiro/secure-git-workshop/settings/branches).   
+Take a look on the [requirements.txt](https://github.com/detiuaveiro/secure-git-workshop/blob/main/app/requirements.txt) file in the main branch.   
 
 ### 5. Observe alerts and pull requests
 ```
@@ -38,8 +38,8 @@ Take a look on the [requirements.txt](https://github.com/arainho/secure-git-work
 - View and approve pull requests
 ```
 
-dependabot alerts [[+]](https://github.com/arainho/secure-git-workshop/security/dependabot)
-pull requests [[+]](https://github.com/arainho/secure-git-workshop/pulls)
+dependabot alerts [[+]](https://github.com/detiuaveiro/secure-git-workshop/security/dependabot)
+pull requests [[+]](https://github.com/detiuaveiro/secure-git-workshop/pulls)
 
 ### 6. Run dependency scan locally (optional)
 ```
