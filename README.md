@@ -4,7 +4,8 @@ Open your terminal/console and run the commands below.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/arainho/secure-git-workshop.git
+# Attention! If you forked the repository, you should change the clone URL accordingly
+git clone https://github.com/detiuaveiro/secure-git-workshop.git
 cd secure-git-workshop || exit
 ```
 
