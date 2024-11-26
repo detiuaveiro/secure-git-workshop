@@ -22,3 +22,7 @@ make container_scanning
 ```bash
 git checkout the-end
 ```
+
+### Extra challenge
+
+Can you create a GitHub Action to automatically scan any container whenever someone updates the source code?
