@@ -11,18 +11,18 @@ services:
       - '9999:9999'
     depends_on:
       - web 
-  zap2docker:
-    image: owasp/zap2docker-weekly
-    ports:
-      - "8080:8080"
-    environment:
-      LEVEL_TO_SHOW: PASS
-      REPORT_FILE: api_report.json
-      TARGET_API_DEF: py-web/openapi.json
-    depends_on:
-      - py-web 
-    volumes:
-      - ./:/zap:rw
-      - ./py-web/openapi.json:/zap/wrk/py-web/openapi.json
-      - ./zap-api-scan.sh:/zap/wrk/zap-api-scan.sh
-    entrypoint: /zap/wrk/zap-api-scan.sh
+  # zap2docker:
+  #   image: owasp/zap2docker-weekly
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     LEVEL_TO_SHOW: PASS
+  #     REPORT_FILE: api_report.json
+  #     TARGET_API_DEF: py-web/openapi.json
+  #   depends_on:
+  #     - py-web 
+  #   volumes:
+  #     - ./:/zap:rw
+  #     - ./py-web/openapi.json:/zap/wrk/py-web/openapi.json
+  #     - ./zap-api-scan.sh:/zap/wrk/zap-api-scan.sh
+  #   entrypoint: /zap/wrk/zap-api-scan.sh

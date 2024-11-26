@@ -25,7 +25,6 @@ env:
   DELETE_FLAG: "true"
   TARGET_API_DEF: "py-web/openapi.json"
   API_REPORT_FILE: "api_report.json"
-  CONTAINER_NAME: "zap2docker_scan"
   APP_DIR: "rest-api-goat"
   REPORT_FOLDER: "reports"
 
@@ -37,6 +36,20 @@ jobs:
     # Checks-out our repository
     - name: Checkout
       uses: actions/checkout@v2
+    
+    - name: Setup
+      run: |-
+        sudo apt-get update -y
+        sudo apt-get install ca-certificates curl -y
+        sudo install -m 0755 -d /etc/apt/keyrings
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+        sudo chmod a+r /etc/apt/keyrings/docker.asc
+        echo \
+          "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+          $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+          sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        sudo apt-get update -y
+        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose -y
 
     # Cleanup
     - name: Cleanup
@@ -46,7 +59,6 @@ jobs:
         then
           docker-compose rm -f web
           docker-compose rm -f py-web
-          docker-compose rm -f zap2docker
         fi
         popd
 
@@ -70,11 +82,10 @@ jobs:
         
     # Launch API scan
     - name: Scan-API
-      env:
-        GOAT_API_TOKEN: ${{ secrets.GOAT_API_TOKEN }}
-      run: |-
-        pushd "${{env.APP_DIR}}"
-        test -d "${REPORT_FOLDER}" || mkdir -p "${REPORT_FOLDER}"
-        docker-compose run --name "${{env.CONTAINER_NAME}}" -d -e ENV="${{env.ENV}}" -e REPORT_FILE="${{env.API_REPORT_FILE}}" -e TARGET="${{env.API_TARGET}}" zap2docker
-        docker logs -f "${{env.CONTAINER_NAME}}"
-        popd
+      uses: zaproxy/action-api-scan@v0.9.0
+      with:
+        docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
+        format: openapi
+        # The target should be changed in the future for the local file
+        target: https://raw.githubusercontent.com/detiuaveiro/secure-git-workshop/refs/heads/step5/rest-api-goat/py-web/openapi.json
+        cmd_options: -z "-config replacer.full_list(0).description=content" -z "-config replacer.full_list(0).enabled=true" -z "-config replacer.full_list(0).matchtype=REQ_HEADER" -z "-config replacer.full_list(0).matchstr=Content-Type" -z "-config replacer.full_list(0).regex=false" -z "-config replacer.full_list(0).replacement='application/octet-stream'" -z "-config replacer.full_list(0).description=accept" -z "-config replacer.full_list(0).enabled=true" -z "-config replacer.full_list(0).matchtype=REQ_HEADER" -z "-config replacer.full_list(0).matchstr=Accept" -z "-config replacer.full_list(0).regex=false" -z "-config replacer.full_list(0).replacement='application\/json'" -z "-config replacer.full_list(0).description=auth1" -z "-config replacer.full_list(0).enabled=true" -z "-config replacer.full_list(0).matchtype=REQ_HEADER" -z "-config replacer.full_list(0).matchstr=X-API-Token" -z "-config replacer.full_list(0).regex=false" -z "-config replacer.full_list(0).replacement=${api_key}"

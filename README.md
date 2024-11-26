@@ -26,8 +26,9 @@ cat .github/workflows/api-scanning.yml
 ```
 
 ### 5. View the Workflow actions running   
+If you forked the repository, change the following URL accordingly.
 ```
-https://github.com/arainho/secure-git-workshop/actions/workflows/api-scanning.yml
+https://github.com/detiuaveiro/secure-git-workshop/actions/workflows/api-scanning.yml
 ```
 
 ### Your done 👍 move to step 6
