@@ -15,6 +15,8 @@ talisman_setup:
 
 	@echo install
 	./bin/install-talisman.sh pre-commit
+    echo "talisman -g pre-commit" >> .git/hooks/pre-commit
+    chmod +x .git/hooks/pre-commit
 
 secret_detection: audit_trufflehog
 
