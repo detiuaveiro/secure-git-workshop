@@ -9,19 +9,19 @@
 
 ### 2. Install talisman as a pre-commit hook
 ```bash
-make talisman_setup
+$ make talisman_setup
 ```
 
 ### 3. Check talisman in action
 Add a secret to a file
 ```bash
-echo "secret_key=c64e8c79aacf5ddb02f1274db2d973f363f4f553ab1692 ⚡☠️" > insecure_notes.txt
-git add insecure_notes.txt
+$ echo "secret_key=c64e8c79aacf5ddb02f1274db2d973f363f4f553ab1692 ⚡☠️" > insecure_notes.txt
+$ git add insecure_notes.txt
 ```
 
 Try to commit the file, and talisman will prompt a warning.
 ```bash
-git commit -m "secret note1"
+$ git commit -m "secret note1"
 ```
 ```bash
 Talisman Report:
@@ -37,18 +37,18 @@ Talisman Report:
 ### 4. Try adding a another secret
 Add a secret to a file
 ```bash
-echo "# new secret \nAKIAIOSFODNN7EXAMPLE ⚡☠️" > insecure_notes.txt
-git add insecure_notes.txt
+$ echo "# new secret \nAKIAIOSFODNN7EXAMPLE ⚡☠️" > insecure_notes.txt
+$ git add insecure_notes.txt
 ```
 
 Try to commit the file, talisman will continue 🔥
 ```bash
-git commit -m "secret note2"
+$ git commit -m "secret note2"
 ```
 
 ### 5. Let's see with another tool 🧐
 ```bash
-make audit_trufflehog
+$ make audit_trufflehog
 ```
 
 Now trufflehog finds the new hardcoded secret 😂
@@ -60,7 +60,7 @@ That's why it's important to have more than one secret detection tool in place!
 
 ### Your done 👍 move to step 3
 ```bash
-git checkout step3
+$ git checkout step3
 ```
 
 #### +info
