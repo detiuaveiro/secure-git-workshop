@@ -1,16 +1,16 @@
 SHELL := /bin/bash
 PACKAGES = git python3 jq curl make
+DIST=$(shell lsb_release -si)
 
 ifeq ($(shell uname -s),Darwin)
 	PKG_SYSTEM := brew
 	EXTRA_ARG='' -e
 endif
 
-ifeq ($(shell uname -s),Linux)
+ifeq ($(DIST),$(filter $(DIST),Kali Debian Ubuntu))
 	# un(comment) to fit your Linux OS package manager
-	#PKG_SYSTEM := apt
-
-	# Vagrant box has Fedora and uses dnf or yum package managers
+	PKG_SYSTEM := apt
+else 
 	PKG_SYSTEM := dnf
 endif
 
