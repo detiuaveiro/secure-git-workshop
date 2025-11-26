@@ -6,7 +6,7 @@
 - Analyze application source code, byte code and binaries for coding and design conditions that are indicative of security vulnerabilities.
 ```
 
-### 2. Create SonarCloud account and organization
+### 2. Create SonarCube Cloud account and organization
 
 Access the following links (the first to create an account or login, and the second to create a new organization):
 ```
