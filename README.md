@@ -1,10 +1,8 @@
 ## step4 - static analysis
 
 ### 1. What is static analysis ?
-```
-- Static Application Security Testing (SAST)
-- Analyze application source code, byte code and binaries for coding and design conditions that are indicative of security vulnerabilities.
-```
+
+Static Application Security Testing (SAST). Analyze application source code, byte code and binaries for coding and design conditions that are indicative of security vulnerabilities.
 
 ### 2. Create SonarCube Cloud account and organization
 
