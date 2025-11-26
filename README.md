@@ -40,8 +40,8 @@ Talisman Report:
 ### 4. Try adding a another secret
 Add a secret to a file
 ```bash
-$ echo "# new secret \nAKIAIOSFODNN7EXAMPLE ⚡☠️" > insecure_notes.txt
-$ git add insecure_notes.txt
+$ echo -e "# new secret \naws_access_key_id = AKIAQYLPMN5HHHFPZAM2\naws_secret_access_key = 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" > insecure_aws.txt
+$ git add insecure_aws.txt
 ```
 
 Try to commit the file, talisman will continue without error 🔥
@@ -55,20 +55,30 @@ $ make audit_trufflehog
 ```
 
 Now trufflehog finds the new hardcoded secret 😂
-```json
-{
-  "branch": "FETCH_HEAD",
-  "commit": "my insecure note\n",
-  "commitHash": "990563066936dc2cbdcf19ea4736da4016473436",
-  "date": "2022-05-24 00:32:30",
-  "diff": "@@ -1,2 +0,0 @@\n-# add secrets! ⚡⚡⚡☠️☠️☠️ \n-AKIAIOSFODNN7EXAMPLE\n",
-  "path": "insecure_notes.txt",
-  "printDiff": "\u001b[93mAKIAIOSFODNN7EXAMPLE\u001b[0m",
-  "reason": "AWS API Key",
-  "stringsFound": [
-    "AKIAIOSFODNN7EXAMPLE"
-  ]
-}
+```
+✅ Found verified result 🐷🔑
+Detector Type: AWS
+Decoder Type: PLAIN
+Raw result: AKIAQYLPMN5HHHFPZAM2
+Resource_type: Access key
+Account: 052310077262
+Message: This is an AWS canary token generated at canarytokens.org.
+Is_canary: true
+Arn: arn:aws:iam::052310077262:user/canarytokens.com@@c20nnjzlioibnaxvt392i9ope
+File: /target/.git/objects/15/0554cfe0275d2912ce726c72d9fe9d8f52a4f2
+Line: 2
+
+✅ Found verified result 🐷🔑
+Detector Type: AWS
+Decoder Type: PLAIN
+Raw result: AKIAQYLPMN5HHHFPZAM2
+Resource_type: Access key
+Account: 052310077262
+Message: This is an AWS canary token generated at canarytokens.org.
+Is_canary: true
+Arn: arn:aws:iam::052310077262:user/canarytokens.com@@c20nnjzlioibnaxvt392i9ope
+File: /target/insecure_aws.txt
+Line: 2
 ```
 
 That's why it's important to have more than one secret detection tool in place!
