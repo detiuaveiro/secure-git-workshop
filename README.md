@@ -2,7 +2,7 @@
 
 ### 1. Enable dependency scanning
 ```
-- Go to Settings -> Security -> Code security 
+- Go to Settings -> Advanced Security -> Code security 
 - Enable Dependabot alerts
 - Enable Dependabot security updates
 ```
@@ -21,7 +21,7 @@
 Observe the [requirements.txt](samples/requirements.txt.sample) sample
 ```
 - Open requirements.txt file in in the default branch (main)
-- Confirm that is as outdated libraries (e.g. requests==2.23.0)
+- Confirm that there are outdated libraries (e.g. requests==2.23.0)
 ```
 
 ### 4. Check the default branch     
