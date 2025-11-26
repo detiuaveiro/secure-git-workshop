@@ -23,6 +23,8 @@ Dynamic application security testing (DAST): "Technologies designed to detect co
 cat .github/workflows/api-scanning.yml
 ```
 
+Put the `api-scanning.yaml` file in the `main` branch, under `.github/workflows`.
+
 ### 5. View the Workflow actions running   
 If you forked the repository, change the following URL accordingly.
 ```
