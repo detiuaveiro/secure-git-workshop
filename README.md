@@ -26,7 +26,7 @@ On the new page you are redirected to click [Analyze a new project](https://sona
 
 ### 4. Setup analysis
 
-After creating a new project, you will be redirected to a page called `Choose your Analysis Method`. Here, you need to click on the option `With GitHub Actions`.
+After creating a new project, access `Administration` on the left menu, and access `Analysis Method`. Here, you need to click on the option `With GitHub Actions`.
 In the new page, you will receive some instructions on how to setup the GitHub Action for your automatic static analysis pipeline:
 - First, copy the given token and set it up on your repository as specified.
 - On the step `Create or update a build file`, choose the `Other` option, as this repository has Python code to be analysed.
@@ -41,15 +41,11 @@ In the new page, you will receive some instructions on how to setup the GitHub A
         ...
         ```
 
-As a final step, you need to access the `Branches` page (on the side menu), and update the long-lived branch from `master` to `main`, as follows:
-![Branches](sonarcloud-branches.png)
-
-
 **Don't forget to commit and push your local code!**
 
 ### 5. Check the analysis results
 
-After pushing the new workflow, it will be executed by GitHub. After some time, you will have a new branch corresponding to `step4` on the `Branches` page in SonarCloud. If everything is working correctly, it will show you an issue.
+After pushing the new workflow, it will be executed by GitHub. After some time, you will have a new branch corresponding to `step4` on the `Branches` page in SonarCube. If everything is working correctly, it will show you an issue.
 
 However, there are no security issues. For you to check the automatic analysis of security problems, you can force your Python code to have one. Perhaps, change the `get_weather.py` code as follows (line 24):
 ```python
