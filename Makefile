@@ -26,5 +26,5 @@ audit_trufflehog:
 		-t \
 		-it \
 		--rm \
-		-v $(PWD):/target \
+		-v "$(shell pwd)":/target \
 		trufflesecurity/trufflehog:latest filesystem /target
