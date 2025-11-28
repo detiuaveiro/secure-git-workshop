@@ -7,7 +7,7 @@ ifeq ($(shell uname -s),Darwin)
 	EXTRA_ARG='' -e
 endif
 
-ifeq ($(DIST),$(filter $(DIST),Kali Debian Ubuntu))
+ifeq ($(DIST),$(filter $(DIST),Kali Debian Ubuntu Linuxmint))
 	# un(comment) to fit your Linux OS package manager
 	PKG_SYSTEM := apt
 else 
